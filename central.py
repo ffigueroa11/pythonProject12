@@ -6,6 +6,7 @@ def cargar_datos(lineas_archivo):
     listGenerosTodos = set()
     peliculas_por_genero = {}
     info_peliculas = []
+    info_peliculas_tuple = ()
     for x in lineas_archivo:
         fila            = x.split(',')
         titulo          = fila[0]
@@ -28,13 +29,18 @@ def cargar_datos(lineas_archivo):
             cantidad_votos,
             listGeneros
         ])
+
+    info_peliculas_tuple = tuple(info_peliculas)
     print(f"Generos encontrados: {listGenerosTodos}")
     print(f"Peliculas por Generos: {peliculas_por_genero}")
-    print(f"Informacion Peliculas: {info_peliculas}")
+    print(f"Informacion Peliculas: {info_peliculas_tuple}")
 
+    print(type(listGenerosTodos))
+    print(type(peliculas_por_genero))
+    print(type(info_peliculas_tuple))
     peliculas_por_genero_tuplas = [(genero, peliculas) for genero, peliculas in peliculas_por_genero.items()]
 
-    return listGenerosTodos,peliculas_por_genero_tuplas,info_peliculas
+    return listGenerosTodos,peliculas_por_genero_tuplas,info_peliculas_tuple
     #pass
 
 
