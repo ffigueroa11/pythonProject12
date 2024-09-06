@@ -1,7 +1,41 @@
 # Parte 1: Cargar los datos
 def cargar_datos(lineas_archivo):
     # Completar
-    pass
+    largo = len(lineas_archivo)
+    #print(lineas_archivo)
+    listGenerosTodos = set()
+    peliculas_por_genero = {}
+    info_peliculas = []
+    for x in lineas_archivo:
+        fila            = x.split(',')
+        titulo          = fila[0]
+        popularidad     = fila[1]
+        voto_promedio   = fila[2]
+        cantidad_votos  = fila[3]
+        generos         = fila[4]
+        listGeneros = generos.split(';')
+        for genero in listGeneros:
+            listGenerosTodos.add(genero)
+
+            if genero not in peliculas_por_genero:
+                peliculas_por_genero[genero] = []
+            peliculas_por_genero[genero].append(titulo)
+
+        info_peliculas.append([
+            titulo,
+            popularidad,
+            voto_promedio,
+            cantidad_votos,
+            listGeneros
+        ])
+    print(f"Generos encontrados: {listGenerosTodos}")
+    print(f"Peliculas por Generos: {peliculas_por_genero}")
+    print(f"Informacion Peliculas: {info_peliculas}")
+
+    peliculas_por_genero_tuplas = [(genero, peliculas) for genero, peliculas in peliculas_por_genero.items()]
+
+    return listGenerosTodos,peliculas_por_genero_tuplas,info_peliculas
+    #pass
 
 
 # Parte 2: Completar las consultas
@@ -97,6 +131,8 @@ def main():
         generos_peliculas, peliculas_por_genero, info_peliculas = cargar_datos(
             lineas_archivo
         )
+
+
     except TypeError as error:
         if "cannot unpack non-iterable NoneType object" in repr(error):
             print(
