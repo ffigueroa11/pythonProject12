@@ -1,12 +1,11 @@
 # Parte 1: Cargar los datos
 def cargar_datos(lineas_archivo):
     # Completar
-    largo = len(lineas_archivo)
     #print(lineas_archivo)
-    listGenerosTodos = set()
+    generos_peliculas = []
     peliculas_por_genero = {}
     info_peliculas = []
-    info_peliculas_tuple = ()
+
     for x in lineas_archivo:
         fila            = x.split(',')
         titulo          = fila[0]
@@ -15,8 +14,11 @@ def cargar_datos(lineas_archivo):
         cantidad_votos  = fila[3]
         generos         = fila[4]
         listGeneros = generos.split(';')
+
         for genero in listGeneros:
-            listGenerosTodos.add(genero)
+            #listGenerosTodos.add(genero)
+            if genero not in generos_peliculas:
+                generos_peliculas.append(genero)
 
             if genero not in peliculas_por_genero:
                 peliculas_por_genero[genero] = []
@@ -30,17 +32,17 @@ def cargar_datos(lineas_archivo):
             listGeneros
         ])
 
-    info_peliculas_tuple = tuple(info_peliculas)
-    print(f"Generos encontrados: {listGenerosTodos}")
-    print(f"Peliculas por Generos: {peliculas_por_genero}")
-    print(f"Informacion Peliculas: {info_peliculas_tuple}")
-
-    print(type(listGenerosTodos))
-    print(type(peliculas_por_genero))
-    print(type(info_peliculas_tuple))
     peliculas_por_genero_tuplas = [(genero, peliculas) for genero, peliculas in peliculas_por_genero.items()]
 
-    return listGenerosTodos,peliculas_por_genero_tuplas,info_peliculas_tuple
+    print(f"Generos encontrados: {generos_peliculas}")
+    print(f"Peliculas por Generos: {peliculas_por_genero_tuplas}")
+    print(f"Informacion Peliculas: {info_peliculas}")
+
+    print(type(generos_peliculas))
+    print(type(peliculas_por_genero_tuplas))
+    print(type(info_peliculas))
+
+    return generos_peliculas,peliculas_por_genero_tuplas,info_peliculas
     #pass
 
 
@@ -48,15 +50,48 @@ def cargar_datos(lineas_archivo):
 def obtener_puntaje_y_votos(nombre_pelicula):
     # Cargar las lineas con la data del archivo
     lineas_archivo = leer_archivo()
+    resultado = ()
     # Completar con lo que falta aquí
-    pass
+    for x in lineas_archivo:
+        fila            = x.split(',')
+        titulo          = fila[0]
+        voto_promedio   = fila[2]
+        cantidad_votos  = fila[3]
+
+        if titulo.upper() == nombre_pelicula.upper():
+            print('Es igual')
+            resultado = (voto_promedio,cantidad_votos)
+
+    return resultado
 
 
 def filtrar_y_ordenar(genero_pelicula):
     # Cargar las lineas con la data del archivo
     lineas_archivo = leer_archivo()
+    peliculas_por_genero = {}
+    ordenados = {}
+    valor = {}
     # Completar con lo que falta aquí
-    pass
+    for x in lineas_archivo:
+        fila            = x.split(',')
+        titulo          = fila[0]
+        generos         = fila[4]
+        listGeneros = generos.split(';')
+
+        for genero in listGeneros:
+            # listGenerosTodos.add(genero)
+            if genero not in peliculas_por_genero:
+                peliculas_por_genero[genero] = []
+            peliculas_por_genero[genero].append(titulo)
+
+    for clave in peliculas_por_genero:
+        if clave.upper() == genero_pelicula.upper():
+            valor = peliculas_por_genero[clave]
+
+    ordenados = sorted(valor, reverse=True)
+
+    return ordenados
+
 
 
 def obtener_estadisticas(genero_pelicula, criterio):
