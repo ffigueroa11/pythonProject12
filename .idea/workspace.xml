@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3dbdd1b7-97df-4af3-85a4-30b6bdcc4f7e" name="Changes" comment="se actualiza funcion cargar_datos">
+    <list default="true" id="3dbdd1b7-97df-4af3-85a4-30b6bdcc4f7e" name="Changes" comment="se actualiza funcion filtrar_y_ordernar">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/central.py" beforeDir="false" afterPath="$PROJECT_DIR$/central.py" afterDir="false" />
     </list>
@@ -79,12 +79,21 @@
       <option name="project" value="LOCAL" />
       <updated>1725637826378</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="se actualiza funcion filtrar_y_ordernar">
+      <option name="closed" value="true" />
+      <created>1725642656378</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1725642656378</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="se crea proyecto" />
     <MESSAGE value="se actualiza funcion cargar_datos" />
-    <option name="LAST_COMMIT_MESSAGE" value="se actualiza funcion cargar_datos" />
+    <MESSAGE value="se actualiza funcion filtrar_y_ordernar" />
+    <option name="LAST_COMMIT_MESSAGE" value="se actualiza funcion filtrar_y_ordernar" />
   </component>
 </project>
