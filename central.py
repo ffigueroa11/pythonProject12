@@ -98,13 +98,7 @@ def obtener_estadisticas(genero_pelicula, criterio):
     # Cargar las lineas con la data del archivo
     lineas_archivo = leer_archivo()
     # Completar con lo que falta aquí
-    generos_peliculas = []
-    peliculas_por_genero = {}
-    info_peliculas = []
     estadistica = []
-    valor_max = 0
-    valor_min = 0
-    valor_prom = 0
 
     for x in lineas_archivo:
         fila            = x.split(',')
@@ -117,7 +111,7 @@ def obtener_estadisticas(genero_pelicula, criterio):
 
         for genero in listGeneros:
             # listGenerosTodos.add(genero)
-            if genero_pelicula == genero:
+            if genero_pelicula.upper() == genero.upper():
                 #print(genero_pelicula)
                 match criterio:
                     case 'popularidad':
